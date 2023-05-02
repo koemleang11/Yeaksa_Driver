@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     borderRadius: screenWidth(10),
     marginBottom: screenWidth(15),
     paddingHorizontal: screenWidth(20),
-    height: screenWidth(230),
+    height: screenWidth(210),
     paddingTop: screenWidth(15),
     paddingBottom: screenWidth(10),
   },
@@ -72,5 +72,6 @@ const styles = StyleSheet.create({
   icon: {
     width: screenWidth(26),
     height: screenWidth(26),
+    tintColor: colors.white,
   },
 });

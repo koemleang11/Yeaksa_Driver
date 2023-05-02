@@ -87,8 +87,8 @@ const DashboardScreen = () => {
                         <DashBoardCard
                           value="25"
                           title="Total Assigned"
-                          icon={AppImages.Product}
-                          onPress={() => navigate(Routes.MainProduct)}
+                          icon={AppImages.Assigned}
+                          onPress={() => navigate(Routes.Assigned)}
                         />
                         <DashBoardCard
                           title="Total Accepted"
@@ -106,7 +106,7 @@ const DashboardScreen = () => {
                           title="In Delivery"
                           value="20"
                           icon={AppImages.Order}
-                          onPress={() => navigate(Routes.Order)}
+                          onPress={() => navigate(Routes.Indelivery)}
                         />
                         <DashBoardCard
                           title="Total Commission"
@@ -132,12 +132,6 @@ const DashboardScreen = () => {
                           renderItem={() => {
                             return (
                               <OrderCard
-                                // onReject={() => {
-                                //   setOpenReject(true);
-                                // }}
-                                // onConfirm={() => {
-                                //   setOpenConfirm(true);
-                                // }}
                                 images={AppImages.Sunchhay}
                                 title="ReakSmey Sunchhay"
                                 order="#00000014"

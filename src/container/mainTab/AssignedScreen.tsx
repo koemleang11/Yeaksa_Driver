@@ -10,7 +10,7 @@ import colors from '../../theme/colors';
 import OrderCard from '../../component/dashboard/OrderCard';
 import {AppImages} from '../../theme/images';
 
-const MyJobsScreen = () => {
+const AssignedScreen = () => {
   const _renderItem = () => {
     return <CardItem />;
   };
@@ -18,7 +18,7 @@ const MyJobsScreen = () => {
   return (
     <>
       <BaseComponent
-        title="My Job"
+        title="Recently Assigned"
         style={{paddingHorizontal: padding_horizontal, flex: 1}}>
         <>
           <View
@@ -28,12 +28,12 @@ const MyJobsScreen = () => {
             }}>
             <HStack justifyContent={'space-between'} zIndex={100}>
               <FlatList
-                data={[1, 2]}
+                data={[1, 2, 3, 4, 5, 6]}
                 renderItem={() => {
                   return (
                     <OrderCard
                       images={AppImages.Sunchhay}
-                      title="Mao Keom Leang"
+                      title="ReakSmey Sunchhay"
                       order="#00000014"
                       date="02 May,2023 10:15AM"
                       location="Street 31BT,Phnom Penh, GWJ4+97 Phnom Penh, 12351"
@@ -50,6 +50,6 @@ const MyJobsScreen = () => {
   );
 };
 
-export default MyJobsScreen;
+export default AssignedScreen;
 
 const styles = StyleSheet.create({});

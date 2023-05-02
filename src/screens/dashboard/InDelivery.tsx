@@ -10,7 +10,7 @@ import colors from '../../theme/colors';
 import OrderCard from '../../component/dashboard/OrderCard';
 import {AppImages} from '../../theme/images';
 
-const MyJobsScreen = () => {
+const Indelivery = () => {
   const _renderItem = () => {
     return <CardItem />;
   };
@@ -18,7 +18,7 @@ const MyJobsScreen = () => {
   return (
     <>
       <BaseComponent
-        title="My Job"
+        title="In Delivery"
         style={{paddingHorizontal: padding_horizontal, flex: 1}}>
         <>
           <View
@@ -50,6 +50,6 @@ const MyJobsScreen = () => {
   );
 };
 
-export default MyJobsScreen;
+export default Indelivery;
 
 const styles = StyleSheet.create({});

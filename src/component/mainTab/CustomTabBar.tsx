@@ -32,7 +32,7 @@ export function CustomTabBar({state, descriptors, navigation}: any) {
         styles.container,
         {
           bottom: insets.bottom,
-          display: state.index == 2 || state.index == 4 ? 'none' : 'flex',
+          display: state.index == 5 || state.index == 6 ? 'none' : 'flex',
         },
       ]}>
       {state.routes.map((route: any, index: any) => {
@@ -151,5 +151,6 @@ const styles = StyleSheet.create({
     width: screenWidth(25),
     marginBottom: screenWidth(10),
     resizeMode: 'contain',
+    tintColor: colors.white,
   },
 });

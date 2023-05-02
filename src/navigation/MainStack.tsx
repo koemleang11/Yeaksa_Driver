@@ -17,7 +17,6 @@ import ContactUsScreen from '../screens/account/ContactUsScreen';
 import TermOfUseScreen from '../screens/account/TermOfUseScreen';
 import PrivacyPolicyScreen from '../screens/account/PrivacyPolicyScreen';
 import SettingScreen from '../screens/account/SettingScreen';
-// import ChatBoxScreen from '../screens/chat/ChatBoxScreen';
 import OrderDetailScreen from '../screens/order/OrderDetailScreen';
 import AddVoucherScreen from '../screens/voucher/AddVoucherScreen';
 import MainProduct from './MainProduct';
@@ -34,6 +33,7 @@ import {Routes} from '../temp/Routes';
 import LanguageScreen from '../container/auth/LanguageScreen';
 import {useAuth} from '../hooks/provider';
 import EditProductScreen from '../container/mainTab/EditProductScreen';
+import Indelivery from '../screens/dashboard/InDelivery';
 
 const MainStack = () => {
   const Stack = createNativeStackNavigator();
@@ -64,10 +64,11 @@ const MainStack = () => {
       <Stack.Screen name={Routes.NewPassword} component={NewPassword} />
       <Stack.Screen name={Routes.Success} component={SucessScreen} />
       <Stack.Screen name={Routes.SignUp} component={SignUpScreen} />
+      <Stack.Screen name={Routes.Indelivery} component={Indelivery} />
       <Stack.Screen
         name={Routes.MainTab}
         component={MainTab}
-        options={{animation: 'fade'}}
+        options={{animation: 'slide_from_right'}}
       />
       <Stack.Screen name={Routes.MyProfile} component={MyProfileScreen} />
       <Stack.Screen name={Routes.EditProfile} component={EditProfileScreen} />
@@ -75,7 +76,6 @@ const MainStack = () => {
       <Stack.Screen name={Routes.Vouchers} component={VoucherScreen} />
       <Stack.Screen name={Routes.AddVoucher} component={AddVoucherScreen} />
       <Stack.Screen name={Routes.ChatSupport} component={ChatSupportScreen} />
-      {/* <Stack.Screen name={Routes.ChatBox} component={ChatBoxScreen} /> */}
       <Stack.Screen
         name={Routes.ChangePassword}
         component={ChangePasswordScreen}

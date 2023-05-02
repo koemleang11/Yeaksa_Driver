@@ -4,14 +4,14 @@ import {Routes} from './Routes';
 export const tabBarItem = [
   {
     id: 0,
-    name: 'add_product',
-    icon: AppImages.Account,
-    route: Routes.Dashboard,
+    name: 'Assigned',
+    icon: AppImages.Assigned,
+    route: Routes.Login,
   },
   {
     id: 1,
-    name: 'chat',
-    icon: AppImages.Chat,
+    name: 'My Jobs',
+    icon: AppImages.Work,
     route: Routes.Chat,
   },
   {
@@ -23,13 +23,13 @@ export const tabBarItem = [
 
   {
     id: 3,
-    name: 'orders',
+    name: 'History',
     icon: AppImages.Order,
     route: Routes.Order,
   },
   {
     id: 4,
-    name: 'account',
+    name: 'Account',
     icon: AppImages.Account,
     route: Routes.Account,
   },
