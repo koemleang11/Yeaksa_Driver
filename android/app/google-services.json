@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "592800011102",
+    "project_id": "franchee-app",
+    "storage_bucket": "franchee-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592800011102:android:02de734d76f766896c75cf",
+        "android_client_info": {
+          "package_name": "com.phsartech_franchise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592800011102-jm83gq53gtg7m0caltmpufr0ebcn320d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.phsartech_franchise",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "592800011102-oq2ih5pfa8ordis90sftjvb0ehf851vd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBToVhyPBuwfI24Xa0Sm91IqKn6J8yrd6E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592800011102-oq2ih5pfa8ordis90sftjvb0ehf851vd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "592800011102-2d94po8vm83dqb2rke8gpmvn3sjcfo8l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.phsartech.yeaksa-franchise"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
