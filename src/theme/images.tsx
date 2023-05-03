@@ -37,4 +37,5 @@ export const AppImages = {
   Cross: require('../assets/images/lotties/cross.json'),
   Account: require('../assets/images/mainTab/account.png'),
   Map: require('../assets/images/icons/Map.png'),
+  Edit: require('../assets/images/account/edit.png'),
 };

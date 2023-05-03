@@ -1,28 +1,21 @@
-import { ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import {ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import BaseComponent from '../../component/BaseComponent';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import ImagePicker from 'react-native-image-crop-picker';
 import Entypo from 'react-native-vector-icons/Entypo';
-import { Box } from 'native-base';
+import {Box, VStack, View} from 'native-base';
 import FastImage from 'react-native-fast-image';
-import { padding_horizontal, screenWidth } from '../../theme/layouts';
+import {padding_horizontal, screenWidth} from '../../theme/layouts';
 import colors from '../../theme/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { style } from '../../styles/style';
+import {style} from '../../styles/style';
 import TextInputWithLabel from '../../component/input/TextInputWithLabel';
 import SubmitButton from '../../component/custom/SubmitButton';
-import { useAppDispatch, useAppSelector } from '../../hooks/dispatch';
-import { loadLoading } from '../../redux/actions';
-import { navigate } from '../../services/navigate/navigation';
-import Route from '../../navigation/Routes';
-import { Routes } from '../../temp/Routes';
-import { requesteditprofile } from '../../redux/actions/editProfile';
-import { ErrorMessage, Formik } from 'formik';
+import {useAppDispatch, useAppSelector} from '../../hooks/dispatch';
+import {ErrorMessage, Formik} from 'formik';
 import * as Yup from 'yup';
-import { create } from 'apisauce';
-import { baseUrl } from '../../services/api/index.service';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AccountHeader from '../../component/account/AccountHeader';
 
 const EditProfileScreen = () => {
   const insets = useSafeAreaInsets();
@@ -40,7 +33,7 @@ const EditProfileScreen = () => {
     firstName: '',
     lastName: '',
     email: '',
-    phone: ''
+    phone: '',
   };
   const validationSchema = Yup.object().shape({
     phoneNumber: Yup.string().required('Phone Number is required'),
@@ -65,7 +58,6 @@ const EditProfileScreen = () => {
     // formdata.append('supplier_name', firstName);
     // formdata.append('shop_name', lastName);
     // formdata.append('account_name', email);
-
     // const apiSauce = create({
     //   baseURL: baseUrl,
     //   headers: {
@@ -102,12 +94,12 @@ const EditProfileScreen = () => {
       height: 300,
       cropping: true,
       cropperCircleOverlay: true,
-    }).then(async (image: any) => { });
+    }).then(async (image: any) => {});
   };
 
   return (
     <>
-      <BaseComponent title="edit_profile" style={styles.container}>
+      <View style={{flex: 1}}>
         {!loading && (
           <Formik
             initialValues={initailValues}
@@ -124,23 +116,13 @@ const EditProfileScreen = () => {
             }) => {
               return (
                 <ScrollView showsVerticalScrollIndicator={false}>
-                  <Box
+                  <AccountHeader title="Edit Profile" />
+                  {/* <Box
                     style={{
                       width: screenWidth(140),
                       marginVertical: screenWidth(30),
                       alignSelf: 'center',
                     }}>
-                    <FastImage
-                      source={{ uri: profile?.path }}
-                      style={styles.profile}>
-                      {!profile?.path && (
-                        <FontAwesome
-                          name="image"
-                          size={screenWidth(40)}
-                          color={colors.grayColor}
-                        />
-                      )}
-                    </FastImage>
                     <TouchableOpacity onPress={onPress} style={styles.button}>
                       <Entypo
                         name="camera"
@@ -148,47 +130,60 @@ const EditProfileScreen = () => {
                         color={colors.mainColor}
                       />
                     </TouchableOpacity>
-                  </Box>
-
-                  <TextInputWithLabel
-                    label="first_name"
-                    placeholder="Reaksmey"
-                    value={firstName}
-                    onChangeText={setFirstName}
-                  />
-                  <TextInputWithLabel
-                    label="last_name"
-                    placeholder="Sunchhay"
-                    value={lastName}
-                    onChangeText={setLastName}
-                  />
-                  <TextInputWithLabel
-                    label="email_address"
-                    placeholder="sunchhay768@gmail.com"
-                    value={email}
-                    onChangeText={setEmail}
-                  />
-                  <TextInputWithLabel
-                    label="shop_phone"
-                    placeholder="087 286 868"
-                    value={phone}
-                    onChangeText={setPhone}
+                  </Box> */}
+                  <VStack style={{marginHorizontal: screenWidth(20)}}>
+                    <TextInputWithLabel
+                      label="first_name"
+                      placeholder="Reaksmey"
+                      value={firstName}
+                      onChangeText={setFirstName}
+                    />
+                    <TextInputWithLabel
+                      label="last_name"
+                      placeholder="Sunchhay"
+                      value={lastName}
+                      onChangeText={setLastName}
+                    />
+                    <TextInputWithLabel
+                      label="Gander"
+                      placeholder="Male"
+                      value={email}
+                      onChangeText={setEmail}
+                    />
+                    <TextInputWithLabel
+                      label="Date Of Birth"
+                      placeholder="18-September-1998"
+                      value={email}
+                      onChangeText={setEmail}
+                    />
+                    <TextInputWithLabel
+                      label="email_address"
+                      placeholder="sunchhay768@gmail.com"
+                      value={email}
+                      onChangeText={setEmail}
+                    />
+                    <TextInputWithLabel
+                      label="shop_phone"
+                      placeholder="087 286 868"
+                      value={phone}
+                      onChangeText={setPhone}
+                    />
+                  </VStack>
+                  <SubmitButton
+                    title="save"
+                    borderRadius={screenWidth(50)}
+                    width={screenWidth(440)}
+                    marginTop={screenWidth(20)}
+                    marginBottom={screenWidth(25) + insets.bottom}
+                    marginHorizontal={padding_horizontal}
+                    onPress={handleSubmit}
                   />
                 </ScrollView>
               );
             }}
           </Formik>
         )}
-      </BaseComponent>
-      <SubmitButton
-        title="save"
-        borderRadius={screenWidth(50)}
-        width={screenWidth(440)}
-        marginTop={screenWidth(20)}
-        marginBottom={screenWidth(25) + insets.bottom}
-        marginHorizontal={padding_horizontal}
-        onPress={handleSubmit}
-      />
+      </View>
     </>
   );
 };

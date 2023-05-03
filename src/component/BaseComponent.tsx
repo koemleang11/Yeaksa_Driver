@@ -48,9 +48,7 @@ const BaseComponent: React.FC<Props> = props => {
           paddingTop: StatusBar.currentHeight,
           height: screenWidth(60) + StatusBar.currentHeight!,
         }}>
-        <TouchableOpacity
-          onPress={() => navigate(Routes.Dashboard)}
-          style={styles.button}>
+        <TouchableOpacity onPress={() => goBack()} style={styles.button}>
           <Ionicons
             name="chevron-back-outline"
             size={screenWidth(30)}

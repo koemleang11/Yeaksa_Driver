@@ -36,6 +36,7 @@ const MyJobsScreen = () => {
                       title="Mao Keom Leang"
                       order="#00000014"
                       date="02 May,2023 10:15AM"
+                      Statuse="Assigned"
                       location="Street 31BT,Phnom Penh, GWJ4+97 Phnom Penh, 12351"
                     />
                   );

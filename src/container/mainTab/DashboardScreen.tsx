@@ -1,6 +1,5 @@
 import {
   FlatList,
-  Image,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -13,25 +12,25 @@ import colors from '../../theme/colors';
 import {AppImages} from '../../theme/images';
 import {HStack, VStack} from 'native-base';
 import DashBoardCard from '../../component/dashboard/DashBoardCard';
-import {metrics, padding_horizontal, screenWidth} from '../../theme/layouts';
-import DashBoardSetting from '../../component/dashboard/DashBoardSetting';
-import {TextTranslate} from '../../component/custom/Label';
+import {padding_horizontal, screenWidth} from '../../theme/layouts';
 import {style} from '../../styles/style';
 import {size} from '../../theme/fonts';
 import OrderCard from '../../component/dashboard/OrderCard';
-import Swiper from 'react-native-swiper';
-import {makeid} from '../../component/custom/FlatListVertical';
-import LinearGradient from 'react-native-linear-gradient';
 import {navigate} from '../../services/navigate/navigation';
 import {Routes} from '../../temp/Routes';
 import CustomModal from '../../component/modal/CustomModal';
 import CustomRejectModal from '../../component/modal/CustomRejectModal';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import DateSelectCard from '../../component/dashboard/dateSelect';
+import {dateFilter} from '../../temp/Date';
+import SelectDate from '../../component/dashboard/SelectDate';
+import {TouchableOpacity} from 'react-native';
 
 const DashboardScreen = () => {
   const [openReject, setOpenReject] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(false);
+  const [selected, setSelected] = useState(dateFilter[0]);
+  const [openSelected, setOpenSelected] = useState(false);
+
   const handleConfirm = () => {
     setOpenConfirm(false);
   };
@@ -44,6 +43,7 @@ const DashboardScreen = () => {
         <StatusBar barStyle={'dark-content'} />
         <SafeAreaView style={{backgroundColor: colors.white}} />
         <DashboardHeader />
+
         <FlatList
           showsVerticalScrollIndicator={false}
           data={null}
@@ -65,18 +65,40 @@ const DashboardScreen = () => {
                         style={{
                           justifyContent: 'space-between',
                           marginHorizontal: screenWidth(20),
+                          marginBottom: screenWidth(20),
                         }}>
-                        <DateSelectCard
+                        <SelectDate
+                          data={dateFilter}
                           title="Today"
-                          onPress={() => navigate(Routes.MainTab)}
+                          isOpen={openSelected}
+                          onPress={() => setOpenSelected(!openSelected)}
+                          value={selected}
+                          onSelectedChange={(value: any) => {
+                            setSelected(value);
+                            setOpenSelected(false);
+                          }}
                         />
-                        <DateSelectCard
+                        <SelectDate
+                          data={dateFilter}
                           title="Weekly"
-                          onPress={() => navigate(Routes.MainTab)}
+                          isOpen={openSelected}
+                          onPress={() => setOpenSelected(!openSelected)}
+                          value={selected}
+                          onSelectedChange={(value: any) => {
+                            setSelected(value);
+                            setOpenSelected(false);
+                          }}
                         />
-                        <DateSelectCard
+                        <SelectDate
+                          data={dateFilter}
                           title="Monthly"
-                          onPress={() => navigate(Routes.MainTab)}
+                          isOpen={openSelected}
+                          onPress={() => setOpenSelected(!openSelected)}
+                          value={selected}
+                          onSelectedChange={(value: any) => {
+                            setSelected(value);
+                            setOpenSelected(false);
+                          }}
                         />
                       </HStack>
                       <HStack
@@ -113,6 +135,7 @@ const DashboardScreen = () => {
                           value="$35"
                           icon={AppImages.TotalSale}
                           size={screenWidth(22)}
+                          onPress={() => navigate(Routes.Commission)}
                         />
                       </HStack>
                       <HStack
@@ -124,7 +147,11 @@ const DashboardScreen = () => {
                         <Text style={styles.recentlyText}>
                           Recently Assigned
                         </Text>
-                        <Text style={styles.seeAll}>See All</Text>
+                        <TouchableOpacity
+                          activeOpacity={0.8}
+                          onPress={() => navigate(Routes.Assigned)}>
+                          <Text style={styles.seeAll}>See All</Text>
+                        </TouchableOpacity>
                       </HStack>
                       <VStack style={{paddingHorizontal: padding_horizontal}}>
                         <FlatList
@@ -136,6 +163,7 @@ const DashboardScreen = () => {
                                 title="ReakSmey Sunchhay"
                                 order="#00000014"
                                 date="02 May,2023 10:15AM"
+                                Statuse="Assigned"
                                 location="Street 31BT,Phnom Penh, GWJ4+97 Phnom Penh, 12351"
                               />
                             );

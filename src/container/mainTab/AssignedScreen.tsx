@@ -9,10 +9,16 @@ import CardItem from '../../component/order/CardItem';
 import colors from '../../theme/colors';
 import OrderCard from '../../component/dashboard/OrderCard';
 import {AppImages} from '../../theme/images';
+import {navigate} from '../../services/navigate/navigation';
+import {Routes} from '../../temp/Routes';
 
 const AssignedScreen = () => {
   const _renderItem = () => {
     return <CardItem />;
+  };
+
+  const onPressed = () => {
+    navigate(Routes.OrderDetail);
   };
 
   return (
@@ -37,6 +43,10 @@ const AssignedScreen = () => {
                       order="#00000014"
                       date="02 May,2023 10:15AM"
                       location="Street 31BT,Phnom Penh, GWJ4+97 Phnom Penh, 12351"
+                      Statuse=" Assigned"
+                      onPress={() => {
+                        onPressed(), {type: 'assigned'};
+                      }}
                     />
                   );
                 }}

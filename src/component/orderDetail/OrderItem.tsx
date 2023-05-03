@@ -9,6 +9,13 @@ import {Battambang} from '../../services/config/fonts';
 import {style} from '../../styles/style';
 
 const OrderItem = () => {
+  // const handleStatuse = (props: any) => {
+  //   const {type} = props.route.params;
+  //   console.log(type);
+  //   if (type === 'assigned') {
+  //   }
+  // };
+
   return (
     <View>
       <View style={styles.container}>
@@ -30,7 +37,7 @@ const OrderItem = () => {
         </HStack>
         <HStack style={styles.row}>
           <Text style={styles.grayText}>Order Statuse</Text>
-          <Text style={{...styles.label, color: colors.green}}>Completed</Text>
+          <Text style={{...styles.label, color: colors.green}}>Assigned</Text>
         </HStack>
         <HStack style={styles.row}>
           <Text style={styles.grayText}>Distance</Text>

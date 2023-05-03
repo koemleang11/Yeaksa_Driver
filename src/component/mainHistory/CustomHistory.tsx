@@ -76,13 +76,6 @@ export function MyTabBar({state, descriptors, navigation, position}: any) {
                   }}>
                   Completed
                 </Text>
-                <Text
-                  style={{
-                    ...styles.value,
-                    color: isFocused ? colors.white : colors.mainColor,
-                  }}>
-                  288
-                </Text>
               </>
             ) : (
               <>
@@ -93,11 +86,6 @@ export function MyTabBar({state, descriptors, navigation, position}: any) {
                   }}>
                   Rejected
                 </Text>
-                <FontAwesome
-                  name="star"
-                  size={screenWidth(30)}
-                  color={isFocused ? colors.white : colors.mainColor}
-                />
               </>
             )}
           </TouchableOpacity>
@@ -112,7 +100,7 @@ const styles = StyleSheet.create({
     borderRadius: screenWidth(10),
     backgroundColor: colors.mainColor,
     width: '48%',
-    height: screenWidth(90),
+    height: screenWidth(60),
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingVertical: screenWidth(15),

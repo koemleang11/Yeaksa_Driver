@@ -17,17 +17,17 @@ var kh = require('../../res/lang/kh.json');
 var en = require('../../res/lang/en.json');
 
 const LanguageScreen = () => {
-  // const dispatch = useAppDispatch();
-  // const onPress = async (language: any) => {
-  //   if (language == 'kh') {
-  //     await AsyncStorage.setItem('@lang', 'kh');
-  //     dispatch(loadLanguage(kh));
-  //   } else {
-  //     await AsyncStorage.setItem('@lang', 'en');
-  //     dispatch(loadLanguage(en));
-  //   }
-  //   navigate(Routes.Login);
-  // };
+  const dispatch = useAppDispatch();
+  const onPress = async (language: any) => {
+    if (language == 'kh') {
+      await AsyncStorage.setItem('@lang', 'kh');
+      dispatch(loadLanguage(kh));
+    } else {
+      await AsyncStorage.setItem('@lang', 'en');
+      dispatch(loadLanguage(en));
+    }
+    navigate(Routes.Login);
+  };
   return (
     <AuthComponent disabledBackButton>
       <Box style={styles.whiteBox}>
@@ -40,10 +40,7 @@ const LanguageScreen = () => {
           }}>
           please_choose_language_below
         </TextTranslate>
-        <TouchableOpacity
-          disabled
-          onPress={() => onPress('kh')}
-          style={styles.button}>
+        <TouchableOpacity onPress={() => onPress('kh')} style={styles.button}>
           <Avatar source={AppImages.KhmerFlag} size={screenWidth(40)} />
           <TextTranslate style={styles.subtitle}>khmer</TextTranslate>
           <Box style={{width: screenWidth(40)}} />

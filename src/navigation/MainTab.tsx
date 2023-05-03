@@ -2,7 +2,6 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import DashboardScreen from '../container/mainTab/DashboardScreen';
 import ChatScreen from '../container/mainTab/ChatScreen';
-import AddProductScreen from '../container/mainTab/AddProductScreen';
 import OrderScreen from '../container/mainTab/AssignedScreen';
 import AccountScreen from '../container/mainTab/AccountScreen';
 import {CustomTabBar} from '../component/mainTab/CustomTabBar';

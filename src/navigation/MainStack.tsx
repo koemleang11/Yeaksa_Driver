@@ -20,21 +20,17 @@ import SettingScreen from '../screens/account/SettingScreen';
 import OrderDetailScreen from '../screens/order/OrderDetailScreen';
 import AddVoucherScreen from '../screens/voucher/AddVoucherScreen';
 import MainProduct from './MainProduct';
-import NotificationScreen from '../screens/notification/NoficationScreen';
-import ShopSettingScreen from '../screens/dashboard/ShopSettingScreen';
-import PaymentSettingScreen from '../screens/dashboard/PaymentSettingScreen';
 import BannerSettingScreen from '../screens/shopSetting/BannerSettingScreen';
 import DeliveryPointScreen from '../screens/shopSetting/DeliveryPointScreen';
 import GeneralSettingScreen from '../screens/shopSetting/GeneralSettingScreen';
 import DeliveryPointMapScreen from '../screens/shopSetting/DeliveryPointMapScreen';
 import EditProfileScreen from '../screens/profile/EditProfileScreen';
-import AddVariationScreen from '../screens/addProduct/AddVariationScreen';
 import {Routes} from '../temp/Routes';
 import LanguageScreen from '../container/auth/LanguageScreen';
 import {useAuth} from '../hooks/provider';
-import EditProductScreen from '../container/mainTab/EditProductScreen';
-import Indelivery from '../screens/dashboard/InDelivery';
-
+import Indelivery from '../screens/dashboard/InDeliveryScreen';
+import CommissionScreen from '../screens/dashboard/CommissionScreen';
+import TotalAssignedScreen from '../screens/account/TotalAssigned/TotalAssignedScreen';
 const MainStack = () => {
   const Stack = createNativeStackNavigator();
   const _user = useAuth();
@@ -65,6 +61,7 @@ const MainStack = () => {
       <Stack.Screen name={Routes.Success} component={SucessScreen} />
       <Stack.Screen name={Routes.SignUp} component={SignUpScreen} />
       <Stack.Screen name={Routes.Indelivery} component={Indelivery} />
+      <Stack.Screen name={Routes.Commission} component={CommissionScreen} />
       <Stack.Screen
         name={Routes.MainTab}
         component={MainTab}
@@ -76,6 +73,10 @@ const MainStack = () => {
       <Stack.Screen name={Routes.Vouchers} component={VoucherScreen} />
       <Stack.Screen name={Routes.AddVoucher} component={AddVoucherScreen} />
       <Stack.Screen name={Routes.ChatSupport} component={ChatSupportScreen} />
+      <Stack.Screen
+        name={Routes.TotalAssigned}
+        component={TotalAssignedScreen}
+      />
       <Stack.Screen
         name={Routes.ChangePassword}
         component={ChangePasswordScreen}
@@ -89,12 +90,6 @@ const MainStack = () => {
       />
       <Stack.Screen name={Routes.Settings} component={SettingScreen} />
       <Stack.Screen name={Routes.OrderDetail} component={OrderDetailScreen} />
-      <Stack.Screen name={Routes.Notification} component={NotificationScreen} />
-      <Stack.Screen name={Routes.ShopSetting} component={ShopSettingScreen} />
-      <Stack.Screen
-        name={Routes.PaymentSetting}
-        component={PaymentSettingScreen}
-      />
       <Stack.Screen
         name={Routes.GeneralSetting}
         component={GeneralSettingScreen}
@@ -111,8 +106,6 @@ const MainStack = () => {
         name={Routes.DeliveryPickupMap}
         component={DeliveryPointMapScreen}
       />
-      <Stack.Screen name={Routes.AddVariation} component={AddVariationScreen} />
-      <Stack.Screen name={Routes.EditProduct} component={EditProductScreen} />
     </Stack.Navigator>
   );
 };

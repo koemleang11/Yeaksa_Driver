@@ -37,58 +37,64 @@ const LoginScreen = () => {
   const [state, setState] = useState({phone: '', password: ''});
   const [errors, setError] = useState<any>({});
 
-  // const validation = () => {
-  //   Keyboard.dismiss();
-  //   let isValid = true;
-  //   if (!state.phone) {
-  //     handleError('phone_number_is_required', 'phone');
-  //     isValid = false;
-  //   } else if (
-  //     state.phone.trim().length < 9 ||
-  //     state.phone.trim().length > 10
-  //   ) {
-  //     handleError('enter_a_valid_phone_number', 'phone');
-  //     isValid = false;
-  //   }
-  //   if (!state.password) {
-  //     handleError('password_is_required', 'password');
-  //     isValid = false;
-  //   } else if (state.password.trim().length < 6) {
-  //     handleError('password_must_be_at_least_6_characters', 'password');
-  //     isValid = false;
-  //   }
-  //   if (isValid) {
-  //     // handleLogin();
-  //     navigate(Routes.MainTab);
-  //   }
-  // };
+  const validation = () => {
+    Keyboard.dismiss();
+    let isValid = true;
+    if (!state.phone) {
+      handleError('phone_number_is_required', 'phone');
+      isValid = false;
+    } else if (
+      state.phone.trim().length < 9 ||
+      state.phone.trim().length > 10
+    ) {
+      handleError('enter_a_valid_phone_number', 'phone');
+      isValid = false;
+    }
+    if (!state.password) {
+      handleError('password_is_required', 'password');
+      isValid = false;
+    } else if (state.password.trim().length < 6) {
+      handleError('password_must_be_at_least_6_characters', 'password');
+      isValid = false;
+    }
+    if (isValid) {
+      // handleLogin();
+      navigate(Routes.MainTab);
+    }
+  };
 
-  // const handleLogin = async () => {
-  //   dispatch(loadLoading(true));
-  //   let fcm_token = await messaging().getToken();
-  //   const apiSauce = create({
-  //     baseURL: baseUrl,
-  //     headers: {
-  //       'Cache-Control': 'no-cache',
-  //       'Accept': 'application/json'
-  //     },
-  //   })
-  //   await apiSauce.post('login', { ...state, fcm_token }).then(async (response: any) => {
-  //     try {
-  //       if (response.data.message === true) {
-  //         await AsyncStorage.setItem('@token', response?.data?.data?.token);
-  //         reset(Routes.MainTab);
-  //         dispatch(loadLoading(false));
-  //         showToast(toast, 'successfully', MessageType.success)
-  //       } else {
-  //         Alert.alert('Login Failed', 'Your phone or password is incorrect.\nPlease try again.', [{ text: 'OK', onPress: () => { } }])
-  //         dispatch(loadLoading(false));
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   })
-  // };
+  const handleLogin = async () => {
+    dispatch(loadLoading(true));
+    let fcm_token = await messaging().getToken();
+    const apiSauce = create({
+      baseURL: baseUrl,
+      headers: {
+        'Cache-Control': 'no-cache',
+        Accept: 'application/json',
+      },
+    });
+    await apiSauce
+      .post('login', {...state, fcm_token})
+      .then(async (response: any) => {
+        try {
+          if (response.data.message === true) {
+            await AsyncStorage.setItem('@token', response?.data?.data?.token);
+            reset(Routes.MainTab);
+            dispatch(loadLoading(false));
+            showToast(toast, 'successfully', MessageType.success);
+          } else {
+            Alert.alert(
+              'Login Failed',
+              'Your phone or password is incorrect.\nPlease try again.',
+              [{text: 'OK', onPress: () => {}}],
+            );
+            dispatch(loadLoading(false));
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      });
+  };
 
   const handleStatechange = (value: any, stateName: any) => {
     setState(prevState => ({...prevState, [stateName]: value}));
@@ -138,8 +144,8 @@ const LoginScreen = () => {
           </TextTranslate>
         </TouchableOpacity>
         <SubmitButton
-          // onPress={validation}
-          onPress={() => navigate(Routes.MainTab)}
+          onPress={validation}
+          // onPress={() => navigate(Routes.MainTab)}
           title="login"
           width={'100%'}
           marginTop={screenWidth(15)}

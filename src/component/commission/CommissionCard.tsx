@@ -5,18 +5,25 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import colors from '../../theme/colors';
 import {padding_horizontal, screenWidth} from '../../theme/layouts';
-import {Center, HStack, VStack} from 'native-base';
+import {Avatar, Box, Center, HStack, VStack} from 'native-base';
 import {AppImages} from '../../theme/images';
 import {size} from '../../theme/fonts';
+import {TextTranslate} from '../custom/Label';
 import {style} from '../../styles/style';
+import ProductCard from '../orderDetail/ProductCard';
+import SubmitButton from '../custom/SubmitButton';
+import {navigate} from '../../services/navigate/navigation';
+import {Routes} from '../../temp/Routes';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const OrderCard = (props: any) => {
+const CommissionCard = (props: any) => {
   return (
-    <TouchableOpacity onPress={props.onPress} style={styles.container}>
+    <TouchableOpacity
+      onPress={() => navigate(Routes.OrderDetail)}
+      style={styles.container}>
       <HStack
         style={{
           marginHorizontal: screenWidth(40),
@@ -25,21 +32,14 @@ const OrderCard = (props: any) => {
         }}>
         <HStack
           style={{
-            justifyContent: 'space-between',
             alignItems: 'center',
           }}>
           <Center>
             <Image source={props.images} style={styles.logo} />
           </Center>
-          <Text style={styles.name}>{props.title}</Text>
+          <Text style={styles.name}>{props.name}</Text>
         </HStack>
-        <Center>
-          <Ionicons
-            name="chevron-forward-outline"
-            size={screenWidth(30)}
-            color={colors.black}
-          />
-        </Center>
+        <Text>{props.title}</Text>
       </HStack>
       <HStack
         style={{
@@ -50,13 +50,10 @@ const OrderCard = (props: any) => {
           borderTopWidth: screenWidth(1.5),
           marginTop: screenWidth(12),
           marginHorizontal: screenWidth(30),
-        }}>
+        }}
+        justifyContent="space-between"
+        alignItems="center">
         <VStack>
-          <HStack
-            style={{paddingVertical: 10, justifyContent: 'space-between'}}>
-            <Text style={styles.label}> Order Number:</Text>
-            <Text style={styles.text}> {props.order}</Text>
-          </HStack>
           <HStack
             style={{paddingVertical: 10, justifyContent: 'space-between'}}>
             <Text style={styles.label}> Order Date:</Text>
@@ -64,7 +61,14 @@ const OrderCard = (props: any) => {
           </HStack>
           <HStack
             style={{paddingVertical: 10, justifyContent: 'space-between'}}>
-            <Text style={styles.label}> Order Satuse:</Text>
+            <Text style={styles.label}> Total Commission:</Text>
+            <Text style={{...styles.text, color: colors.green}}>
+              {props.commision}
+            </Text>
+          </HStack>
+          <HStack
+            style={{paddingVertical: 10, justifyContent: 'space-between'}}>
+            <Text style={styles.label}> Statuse:</Text>
             <Text style={{...styles.text, color: colors.green}}>
               {props.Statuse}
             </Text>
@@ -99,7 +103,7 @@ const OrderCard = (props: any) => {
   );
 };
 
-export default React.memo(OrderCard);
+export default React.memo(CommissionCard);
 
 const styles = StyleSheet.create({
   container: {
@@ -108,6 +112,7 @@ const styles = StyleSheet.create({
     paddingTop: screenWidth(20),
     marginBottom: screenWidth(15),
     ...style.normalShadow,
+    marginHorizontal: screenWidth(10),
     elevation: screenWidth(5),
   },
   name: {

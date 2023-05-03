@@ -16,7 +16,7 @@ import {screenWidth} from '../../theme/layouts';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {size} from '../../theme/fonts';
 import {BattambangBold} from '../../services/config/fonts';
-import SelectDateDropDown from './SelectDateDropDown';
+import SelectDateDropDown from './SelectDate';
 import {style} from '../../styles/style';
 import {navigate} from '../../services/navigate/navigation';
 import {Routes} from '../../temp/Routes';

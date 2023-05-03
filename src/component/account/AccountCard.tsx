@@ -10,44 +10,59 @@ import {AppImages} from '../../theme/images';
 
 interface Props {
   title: string;
+  icon: any;
+  value: any;
+  size?: any;
   onPress?: () => void;
 }
 
-const DateSelectCard: React.FC<Props> = props => {
+const AccountCard: React.FC<Props> = props => {
   return (
     <TouchableOpacity onPress={props.onPress} style={styles.container}>
-      <VStack justifyContent={'center'}>
-        <Text style={styles.label}>{props.title}</Text>
+      <VStack>
+        <VStack
+          justifyContent={'center'}
+          alignItems={'center'}
+          alignSelf={'center'}>
+          <Text style={styles.value}>{props.value}</Text>
+          <Text style={styles.label}>{props.title}</Text>
+        </VStack>
       </VStack>
     </TouchableOpacity>
   );
 };
 
-export default React.memo(DateSelectCard);
+export default React.memo(AccountCard);
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    backgroundColor: colors.mainColor,
-    width: screenWidth(140),
-    justifyContent: 'space-between',
+    backgroundColor: colors.lightGrayColor,
+    width: screenWidth(210),
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: screenWidth(10),
     marginBottom: screenWidth(15),
     paddingHorizontal: screenWidth(20),
-    height: screenWidth(70),
-    paddingTop: screenWidth(15),
-    paddingBottom: screenWidth(10),
+    height: screenWidth(100),
   },
   iconContainer: {
     width: screenWidth(46),
     height: screenWidth(46),
     borderRadius: screenWidth(46),
     backgroundColor: 'rgba(116, 118, 204, 0.4)',
-    alignSelf: 'center',
   },
   label: {
     fontSize: size.font20,
-    color: colors.lightGrayColor,
-    textAlign: 'center',
+    color: colors.black,
+  },
+  value: {
+    fontSize: size.font22,
+    color: colors.red,
+    ...Battambang,
+  },
+  icon: {
+    width: screenWidth(26),
+    height: screenWidth(26),
+    tintColor: colors.black,
   },
 });
