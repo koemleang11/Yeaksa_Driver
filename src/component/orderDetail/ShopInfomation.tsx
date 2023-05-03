@@ -9,6 +9,8 @@ import {style} from '../../styles/style';
 import {AppImages} from '../../theme/images';
 import SubmitButton from '../custom/SubmitButton';
 import DirectionButton from '../custom/DirectionButton';
+import {navigate} from '../../services/navigate/navigation';
+import {Routes} from '../../temp/Routes';
 
 const ShopInformation = (props: any) => {
   return (
@@ -40,7 +42,7 @@ const ShopInformation = (props: any) => {
         </Text>
       </HStack>
       <HStack>
-        <DirectionButton />
+        <DirectionButton onPress={() => navigate(Routes.DeliveryPickupMap)} />
       </HStack>
     </View>
   );

@@ -13,11 +13,13 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CustomRejectModal from '../../component/modal/CustomRejectModal';
 import {AppImages} from '../../theme/images';
 import ShopInformation from '../../component/orderDetail/ShopInfomation';
-import SwipeButton from 'rn-swipe-button';
-
+import SwipeButton from '../../component/custom/CustomSwipeButton';
 const OrderDetailScreen = () => {
   const [openReject, setOpenReject] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(false);
+  const [toggleState, setToggleState] = useState(false);
+
+  const handleToggle = (value: any) => setToggleState(value);
   const handleConfirm = () => {
     setOpenConfirm(false);
   };
@@ -61,14 +63,18 @@ const OrderDetailScreen = () => {
           borderWidth={screenWidth(2)}
           color={colors.red}
         />
-        <SwipeButton
-          enableReverseSwipe
-          width={'60%'}
-          railBackgroundColor={colors.mainColor}
-          thumbIconBackgroundColor="#FFFFFF"
+        <SubmitButton
+          onPress={() => {
+            setOpenConfirm(true);
+          }}
           title="Accept Order"
-          titleColor={colors.white}
+          width={'65%'}
+          borderRadius={screenWidth(50)}
+          backgroundColor={colors.mainColor}
+          borderWidth={screenWidth(2)}
+          color={colors.white}
         />
+        {/* <SwipeButton onToggle={handleToggle} /> */}
       </HStack>
       <CustomModal
         isOpen={openConfirm}
@@ -122,5 +128,13 @@ const styles = StyleSheet.create({
     ...style.normalShadow,
     alignItems: 'center',
     elevation: screenWidth(5),
+  },
+  root: {
+    width: '70%',
+    height: screenWidth(70),
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

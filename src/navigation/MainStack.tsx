@@ -9,7 +9,7 @@ import SucessScreen from '../container/auth/SucessScreen';
 import SignUpScreen from '../container/auth/SignUpScreen';
 import MainTab from './MainTab';
 import MyProfileScreen from '../screens/account/MyProfileScreen';
-import VoucherScreen from '../screens/account/VoucherScreen';
+// import VoucherScreen from '../screens/account/VoucherScreen';
 import ChatSupportScreen from '../screens/account/ChatSupportScreen';
 import ChangePasswordScreen from '../screens/account/ChangePasswordScreen';
 import AboutUsScreen from '../screens/account/AboutUsScreen';
@@ -70,7 +70,7 @@ const MainStack = () => {
       <Stack.Screen name={Routes.MyProfile} component={MyProfileScreen} />
       <Stack.Screen name={Routes.EditProfile} component={EditProfileScreen} />
       <Stack.Screen name={Routes.MainProduct} component={MainProduct} />
-      <Stack.Screen name={Routes.Vouchers} component={VoucherScreen} />
+      {/* <Stack.Screen name={Routes.Vouchers} component={VoucherScreen} /> */}
       <Stack.Screen name={Routes.AddVoucher} component={AddVoucherScreen} />
       <Stack.Screen name={Routes.ChatSupport} component={ChatSupportScreen} />
       <Stack.Screen

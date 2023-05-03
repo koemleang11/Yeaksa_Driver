@@ -14,7 +14,7 @@ const SubmitButton = (props: any) => {
       onPress={props.onPress}
       activeOpacity={0.7}
       style={[styles.container, {...props}]}>
-      <HStack>
+      <HStack justifyContent={'center'} alignItems={'center'}>
         <Image source={AppImages.Map} style={styles.icon} />
         <Text
           style={[

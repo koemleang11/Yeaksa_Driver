@@ -45,9 +45,7 @@ const LanguageScreen = () => {
           <TextTranslate style={styles.subtitle}>khmer</TextTranslate>
           <Box style={{width: screenWidth(40)}} />
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigate(Routes.Login)}
-          style={styles.button}>
+        <TouchableOpacity onPress={() => onPress('en')} style={styles.button}>
           <Avatar source={AppImages.EnglandFlag} size={screenWidth(40)} />
           <TextTranslate style={styles.subtitle}>english</TextTranslate>
           <Box style={{width: screenWidth(40)}} />

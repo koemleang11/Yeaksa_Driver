@@ -4,7 +4,7 @@ import {Routes} from '../temp/Routes';
 import ProductScreen from '../screens/mainProduct/CompletedScreen';
 import ReviewScreen from '../screens/mainProduct/RejectedScreen';
 import BaseComponent from '../component/BaseComponent';
-import {MyTabBar} from '../component/mainProduct/CustomHistory';
+import {MyTabBar} from '../component/mainHistory/CustomHistory';
 import CompletedScreen from '../screens/mainProduct/CompletedScreen';
 import RejectedScreen from '../screens/mainProduct/RejectedScreen';
 
