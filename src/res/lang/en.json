@@ -194,6 +194,10 @@
     "Setting": "Setting",
     "sign_out": "Sign Out",
     "Assigned": "Assigned",
-    "All": "All"
+    "All": "All",
+    "accept_order": "Accept Order",
+    "arrived_shop": "Arrived Shop",
+    "start_delivery": "Start Delivery",
+    "Finish": "Finish"
 
 }

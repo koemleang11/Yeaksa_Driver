@@ -8,14 +8,7 @@ import ProductCard from './ProductCard';
 import {Battambang} from '../../services/config/fonts';
 import {style} from '../../styles/style';
 
-const OrderItem = () => {
-  // const handleStatuse = (props: any) => {
-  //   const {type} = props.route.params;
-  //   console.log(type);
-  //   if (type === 'assigned') {
-  //   }
-  // };
-
+const OrderItem = (props: any) => {
   return (
     <View>
       <View style={styles.container}>
@@ -29,23 +22,25 @@ const OrderItem = () => {
         </HStack>
         <HStack style={styles.row}>
           <Text style={styles.grayText}>Order Number</Text>
-          <Text style={styles.label}>#00000014</Text>
+          <Text style={styles.label}>{props.orderNumber}</Text>
         </HStack>
         <HStack style={styles.row}>
           <Text style={styles.grayText}>Order Date</Text>
-          <Text style={styles.label}>05 May,2023 10:25AM</Text>
+          <Text style={styles.label}>{props.date}</Text>
         </HStack>
         <HStack style={styles.row}>
           <Text style={styles.grayText}>Order Statuse</Text>
-          <Text style={{...styles.label, color: colors.green}}>Assigned</Text>
+          <Text style={{...styles.label, color: colors.green}}>
+            {props.Statuse}
+          </Text>
         </HStack>
         <HStack style={styles.row}>
           <Text style={styles.grayText}>Distance</Text>
-          <Text style={styles.label}>1.5 Km</Text>
+          <Text style={styles.label}>{props.Distance}</Text>
         </HStack>
         <HStack style={styles.row}>
           <Text style={styles.grayText}>Payment Method</Text>
-          <Text style={styles.label}>ABA PAY</Text>
+          <Text style={styles.label}>{props.payment}</Text>
         </HStack>
         <HStack style={styles.row}>
           <Text style={styles.grayText}>Delivery Fee</Text>
@@ -53,7 +48,9 @@ const OrderItem = () => {
         </HStack>
         <HStack style={styles.row}>
           <Text style={styles.grayText}>Total Amount</Text>
-          <Text style={{...styles.label, color: colors.green}}>$3.00</Text>
+          <Text style={{...styles.label, color: colors.green}}>
+            {props.total}
+          </Text>
         </HStack>
       </View>
       <HStack
