@@ -164,12 +164,11 @@ const App = () => {
   return (
     <AppProvider>
       <NativeBaseProvider>
-        {/* <StatusBar
-          hidden={false}
+        <StatusBar
           translucent
           backgroundColor={'transparent'}
           barStyle={'dark-content'}
-        /> */}
+        />
         <Route />
         {/* {hidden ? <SplashScreen /> : <LanguageScreen />} */}
       </NativeBaseProvider>

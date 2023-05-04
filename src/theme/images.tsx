@@ -38,4 +38,8 @@ export const AppImages = {
   Account: require('../assets/images/mainTab/account.png'),
   Map: require('../assets/images/icons/Map.png'),
   Edit: require('../assets/images/account/edit.png'),
+  Search: require('../assets/images/icons/search.png'),
+  Filter: require('../assets/images/icons/filter.jpg'),
+  Delate: require('../assets/images/icons/delete.jpg'),
+  Cancel: require('../assets/images/icons/cancel.png'),
 };

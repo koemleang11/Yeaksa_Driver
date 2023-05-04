@@ -34,7 +34,6 @@ const AuthComponent: React.FC<Props> = props => {
   return (
     <>
       <ImageBackground source={AppImages.Background} style={styles.container}>
-        <StatusBar barStyle={'light-content'} />
         <LinearGradient
           colors={['transparent', colors.mainColor, colors.mainColor]}
           style={{

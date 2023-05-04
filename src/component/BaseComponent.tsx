@@ -8,6 +8,7 @@ import {
   Keyboard,
   TouchableOpacity,
   Text,
+  Image,
 } from 'react-native';
 import React from 'react';
 import {Box, Center, HStack, VStack} from 'native-base';
@@ -23,6 +24,7 @@ import {Battambang} from '../services/config/fonts';
 import SpinnerLoading from './loading/SpinnerLoading';
 import {useAppSelector} from '../hooks/dispatch';
 import {Routes} from '../temp/Routes';
+import {AppImages} from '../theme/images';
 
 interface Props {
   children?: any;
@@ -57,22 +59,28 @@ const BaseComponent: React.FC<Props> = props => {
             color={colors.grayColor}
           />
         </TouchableOpacity>
+
         {props.disabledTranstate ? (
           <TextTranslate style={styles.title}>{props.title}</TextTranslate>
         ) : (
-          <TextTranslate style={styles.title}>{props.title}</TextTranslate>
+          <Text style={styles.title}>{props.title}</Text>
         )}
-        {props.enabledAdd ? (
-          <TouchableOpacity onPress={props.onAdd} style={styles.button}>
-            <AntDesign
-              name="pluscircleo"
-              size={screenWidth(28)}
-              color={colors.mainColor}
-            />
-          </TouchableOpacity>
-        ) : (
-          <Box style={{...styles.button, backgroundColor: 'transparent'}} />
-        )}
+        <HStack>
+          {props.enabledAdd ? (
+            <TouchableOpacity onPress={props.onAdd} style={styles.button}>
+              <Image source={AppImages.Search} style={styles.icon} />
+            </TouchableOpacity>
+          ) : (
+            <Box />
+          )}
+          {props.enabledAdd ? (
+            <TouchableOpacity onPress={props.onAdd} style={styles.button}>
+              <Image source={AppImages.Filter} style={styles.icon} />
+            </TouchableOpacity>
+          ) : (
+            <Box style={{...styles.button, backgroundColor: 'transparent'}} />
+          )}
+        </HStack>
       </HStack>
       <KeyboardAvoidingView
         enabled
@@ -104,6 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: screenWidth(50) / 2,
     backgroundColor: colors.lowOpacityMain,
     ...style.center,
+    marginHorizontal: screenWidth(10),
   },
   header: {
     backgroundColor: colors.white,
@@ -117,5 +126,9 @@ const styles = StyleSheet.create({
     fontSize: size.font22,
     color: colors.black,
     ...Battambang,
+  },
+  icon: {
+    height: screenWidth(30),
+    width: screenWidth(30),
   },
 });

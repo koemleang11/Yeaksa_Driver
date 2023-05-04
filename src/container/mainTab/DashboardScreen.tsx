@@ -41,8 +41,8 @@ const DashboardScreen = () => {
   return (
     <>
       <VStack flex={1}>
-        <StatusBar barStyle={'dark-content'} />
-        <SafeAreaView style={{backgroundColor: colors.white}} />
+        <StatusBar translucent={false} backgroundColor={colors.white} />
+        <SafeAreaView />
         <DashboardHeader />
 
         <FlatList

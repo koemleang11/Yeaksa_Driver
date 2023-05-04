@@ -50,4 +50,5 @@ export const Routes = {
   Indelivery: 'Indelivery',
   Commission: 'Commission',
   TotalAssigned: 'TotalAssigned',
+  Search: 'Search',
 };
