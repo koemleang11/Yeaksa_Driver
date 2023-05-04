@@ -162,6 +162,7 @@ const DashboardScreen = () => {
                           renderItem={() => {
                             return (
                               <OrderCard
+                                onPress={() => navigate(Routes.OrderDetail)}
                                 images={AppImages.Sunchhay}
                                 title="ReakSmey Sunchhay"
                                 order="#00000014"
