@@ -18,7 +18,7 @@ const MyJobsScreen = () => {
   return (
     <>
       <BaseComponent
-        title="My Job"
+        title="my_job"
         style={{paddingHorizontal: padding_horizontal, flex: 1}}>
         <>
           <View

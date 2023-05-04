@@ -12,7 +12,7 @@ const SubmitButton = (props: any) => {
       onPress={props.onPress}
       activeOpacity={0.7}
       style={[styles.container, {...props}]}>
-      <Text
+      <TextTranslate
         style={[
           styles.text,
           {
@@ -21,7 +21,7 @@ const SubmitButton = (props: any) => {
           },
         ]}>
         {props.title}
-      </Text>
+      </TextTranslate>
     </TouchableOpacity>
   );
 };

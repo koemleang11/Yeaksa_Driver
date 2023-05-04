@@ -69,23 +69,23 @@ export function MyTabBar({state, descriptors, navigation, position}: any) {
             onLongPress={onLongPress}>
             {index == 0 ? (
               <>
-                <Text
+                <TextTranslate
                   style={{
                     ...styles.title,
                     color: isFocused ? colors.lightGrayColor : colors.mainColor,
                   }}>
                   Completed
-                </Text>
+                </TextTranslate>
               </>
             ) : (
               <>
-                <Text
+                <TextTranslate
                   style={{
                     ...styles.title,
                     color: isFocused ? colors.lightGrayColor : colors.mainColor,
                   }}>
                   Rejected
-                </Text>
+                </TextTranslate>
               </>
             )}
           </TouchableOpacity>

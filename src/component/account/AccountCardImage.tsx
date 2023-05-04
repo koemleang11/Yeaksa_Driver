@@ -28,7 +28,7 @@ const AccountCardImage: React.FC<Props> = props => {
           <Center>
             <Image source={props.images} style={styles.icon} />
           </Center>
-          <Text style={styles.label}>{props.title}</Text>
+          <TextTranslate style={styles.label}>{props.title}</TextTranslate>
         </VStack>
       </VStack>
     </TouchableOpacity>

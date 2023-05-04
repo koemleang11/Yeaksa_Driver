@@ -24,7 +24,7 @@ const AssignedScreen = () => {
   return (
     <>
       <BaseComponent
-        title="Recently Assigned"
+        title="recently_assigned"
         style={{paddingHorizontal: padding_horizontal, flex: 1}}>
         <>
           <View

@@ -7,7 +7,6 @@ import colors from '../../theme/colors';
 import {size} from '../../theme/fonts';
 import Octicons from 'react-native-vector-icons/Octicons';
 import {style} from '../../styles/style';
-import {TextTranslate} from '../custom/Label';
 
 interface Props {
   isOpen: boolean;
@@ -18,7 +17,7 @@ interface Props {
   onPress: () => void;
 }
 
-const SelectDate: React.FC<Props> = props => {
+const CustomButtonDate: React.FC<Props> = props => {
   const _renderItem = ({item}: any) => {
     return (
       <TouchableOpacity
@@ -41,14 +40,14 @@ const SelectDate: React.FC<Props> = props => {
   return (
     <View style={{width: screenWidth(150), alignItems: 'flex-end'}}>
       <TouchableOpacity onPress={props.onPress} style={styles.button}>
-        <TextTranslate style={styles.title}>{props.title}</TextTranslate>
+        <Text style={styles.title}>{props.title}</Text>
         {props.isOpen}
       </TouchableOpacity>
     </View>
   );
 };
 
-export default React.memo(SelectDate);
+export default React.memo(CustomButtonDate);
 
 const styles = StyleSheet.create({
   title: {

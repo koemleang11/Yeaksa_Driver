@@ -40,7 +40,6 @@ const CommissionScreen = () => {
                 }}>
                 <HStack
                   justifyContent={'space-between'}
-                  zIndex={100}
                   marginBottom={screenWidth(20)}>
                   <SelectDate
                     data={dateFilter}

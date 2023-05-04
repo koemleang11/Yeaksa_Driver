@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   Image,
+  View,
 } from 'react-native';
 import React from 'react';
 import colors from '../../theme/colors';
@@ -13,6 +14,7 @@ import {AppImages} from '../../theme/images';
 import {size} from '../../theme/fonts';
 import {style} from '../../styles/style';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {TextTranslate} from '../custom/Label';
 
 const OrderCard = (props: any) => {
   return (
@@ -51,25 +53,22 @@ const OrderCard = (props: any) => {
           marginTop: screenWidth(12),
           marginHorizontal: screenWidth(30),
         }}>
-        <VStack>
-          <HStack
-            style={{paddingVertical: 10, justifyContent: 'space-between'}}>
-            <Text style={styles.label}> Order Number:</Text>
+        <View>
+          <HStack style={styles.row}>
+            <TextTranslate style={styles.label}>order_number</TextTranslate>
             <Text style={styles.text}> {props.order}</Text>
           </HStack>
-          <HStack
-            style={{paddingVertical: 10, justifyContent: 'space-between'}}>
-            <Text style={styles.label}> Order Date:</Text>
+          <HStack style={styles.row}>
+            <TextTranslate style={styles.label}>order_date</TextTranslate>
             <Text style={styles.text}>{props.date}</Text>
           </HStack>
-          <HStack
-            style={{paddingVertical: 10, justifyContent: 'space-between'}}>
-            <Text style={styles.label}> Order Satuse:</Text>
+          <HStack style={styles.row}>
+            <TextTranslate style={styles.label}>order_statuse</TextTranslate>
             <Text style={{...styles.text, color: colors.green}}>
               {props.Statuse}
             </Text>
           </HStack>
-        </VStack>
+        </View>
       </HStack>
       <HStack
         style={{
@@ -107,9 +106,9 @@ const styles = StyleSheet.create({
     borderRadius: screenWidth(10),
     paddingTop: screenWidth(20),
     marginBottom: screenWidth(15),
-    ...style.normalShadow,
     elevation: screenWidth(5),
   },
+
   name: {
     fontSize: size.font22,
     color: colors.black,
@@ -146,5 +145,9 @@ const styles = StyleSheet.create({
   locationIcon: {
     height: screenWidth(28),
     width: screenWidth(28),
+  },
+  row: {
+    justifyContent: 'space-between',
+    paddingVertical: screenWidth(10),
   },
 });

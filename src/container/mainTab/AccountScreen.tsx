@@ -137,15 +137,15 @@ const AccountScreen = () => {
         renderItem={() => <></>}
         ListHeaderComponent={
           <Box style={{marginBottom: screenWidth(130)}}>
-            <AccountHeader title="My Account" />
+            <AccountHeader title="my_account" />
             <HStack
               style={{
                 justifyContent: 'space-between',
                 marginHorizontal: screenWidth(20),
                 marginVertical: screenWidth(20),
               }}>
-              <Text style={styles.title}>My Delivery</Text>
-              <Text style={styles.seeAll}>See All</Text>
+              <TextTranslate style={styles.title}>my_delivery</TextTranslate>
+              <TextTranslate style={styles.seeAll}>see_all</TextTranslate>
             </HStack>
             <HStack
               style={{
@@ -154,12 +154,12 @@ const AccountScreen = () => {
               }}>
               <AccountCard
                 value="25"
-                title="Total Assigned"
+                title="total_assigned"
                 icon={AppImages.Assigned}
                 onPress={() => navigate(Routes.TotalAssigned)}
               />
               <AccountCard
-                title="Total Accepted"
+                title="total_accepted"
                 value="5"
                 icon={AppImages.Rating}
                 size={screenWidth(25)}
@@ -171,13 +171,13 @@ const AccountScreen = () => {
                 marginHorizontal: padding_horizontal,
               }}>
               <AccountCard
-                title="In Delivery"
+                title="in_delivery"
                 value="20"
                 icon={AppImages.Order}
                 onPress={() => navigate(Routes.Indelivery)}
               />
               <AccountCard
-                title="Total Rejected"
+                title="total_rejected"
                 value="12"
                 icon={AppImages.TotalSale}
                 size={screenWidth(22)}
@@ -189,7 +189,7 @@ const AccountScreen = () => {
                 marginHorizontal: screenWidth(20),
                 marginVertical: screenWidth(20),
               }}>
-              <Text style={styles.title}>About Us</Text>
+              <TextTranslate style={styles.title}>about_us</TextTranslate>
             </HStack>
             <HStack
               style={{
@@ -198,12 +198,12 @@ const AccountScreen = () => {
               }}>
               <AccountCardImage
                 value="25"
-                title="About Us"
+                title="about_us"
                 images={AppImages.AboutUs}
                 onPress={() => navigate(Routes.AboutUs)}
               />
               <AccountCardImage
-                title="Privacy Policy"
+                title="privacy_policy"
                 value="5"
                 images={AppImages.PrivacyPolicy}
                 onPress={() => navigate(Routes.PrivacyPolicy)}
@@ -215,13 +215,13 @@ const AccountScreen = () => {
                 marginHorizontal: padding_horizontal,
               }}>
               <AccountCardImage
-                title="Term of Use"
+                title="term_of_use"
                 value="20"
                 images={AppImages.TermOfUse}
                 onPress={() => navigate(Routes.TermOfUse)}
               />
               <AccountCardImage
-                title="Contact Us"
+                title="contact_us"
                 value="$35"
                 images={AppImages.ContactUs}
                 onPress={() => navigate(Routes.ContactUs)}
@@ -233,7 +233,7 @@ const AccountScreen = () => {
                 marginHorizontal: screenWidth(20),
                 marginVertical: screenWidth(20),
               }}>
-              <Text style={styles.title}>Other</Text>
+              <TextTranslate style={styles.title}>Other</TextTranslate>
             </HStack>
             <HStack
               style={{
@@ -247,7 +247,7 @@ const AccountScreen = () => {
                 onPress={() => navigate(Routes.Settings)}
               />
               <AccountCardImage
-                title="Change Password"
+                title="change_password"
                 value="5"
                 images={AppImages.ChangePassword}
                 size={screenWidth(25)}
@@ -257,7 +257,7 @@ const AccountScreen = () => {
 
             <SubmitButton
               onPress={() => navigate(Routes.Login)}
-              title="signup"
+              title="sign_out"
               backgroundColor={colors.mainColor}
               borderColor={colors.mainColor}
               borderWidth={screenWidth(2)}

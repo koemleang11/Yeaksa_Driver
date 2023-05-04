@@ -23,6 +23,7 @@ import {Routes} from '../../temp/Routes';
 import {dateFilter} from '../../temp/Date';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
+import {TextTranslate} from '../custom/Label';
 
 const DashboardHeader = () => {
   const [selected, setSelected] = useState(dateFilter[0]);
@@ -67,7 +68,7 @@ const DashboardHeader = () => {
         <VStack
           justifyContent={'space-between'}
           style={{paddingVertical: screenWidth(5)}}>
-          <Text style={styles.title}>Welcome Back</Text>
+          <TextTranslate style={styles.title}>welcome_back</TextTranslate>
           <Text style={styles.subtitle}>Reaksmey Sunchhay</Text>
         </VStack>
       </HStack>
@@ -93,9 +94,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: screenWidth(20),
     paddingVertical: screenWidth(10),
     ...style.normalShadow,
-
-    paddingTop:
-      Platform.OS == 'ios' ? 0 : StatusBar.currentHeight! + screenWidth(10),
     zIndex: 100,
   },
   logoContainer: {

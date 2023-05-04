@@ -32,7 +32,7 @@ const DashBoardCard: React.FC<Props> = props => {
         </Center>
         <VStack>
           <Text style={styles.value}>{props.value}</Text>
-          <Text style={styles.label}>{props.title}</Text>
+          <TextTranslate style={styles.label}>{props.title}</TextTranslate>
         </VStack>
       </VStack>
     </TouchableOpacity>

@@ -15,15 +15,16 @@ import {style} from '../../styles/style';
 import FastImage from 'react-native-fast-image';
 import {navigate} from '../../services/navigate/navigation';
 import {Routes} from '../../temp/Routes';
+import {TextTranslate} from '../custom/Label';
 
 const AccountHeader = (props: any) => {
   const [notification, setNotification] = useState(false);
 
   return (
     <View>
-      <StatusBar translucent={false} backgroundColor={colors.mainColor} />
+      <StatusBar translucent={false} backgroundColor={colors.white} />
       <HStack style={styles.container}>
-        <Text style={styles.title}>{props.title}</Text>
+        <TextTranslate style={styles.title}>{props.title}</TextTranslate>
       </HStack>
       <HStack style={styles.profileContainer}>
         <HStack>
@@ -31,7 +32,9 @@ const AccountHeader = (props: any) => {
             <FastImage
               source={AppImages.Sunchhay}
               style={styles.profile}></FastImage>
+            <Box style={styles.active}></Box>
           </Center>
+
           <VStack>
             <Text style={styles.name}>ReakSmey Sunchhay</Text>
             <Text style={styles.name}>Code: 000123</Text>
@@ -55,14 +58,14 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: screenWidth(20),
     height: screenWidth(150),
-    backgroundColor: colors.mainColor,
+    backgroundColor: colors.white,
     width: screenWidth(480),
     justifyContent: 'center',
     ...style.normalShadow,
   },
   profileContainer: {
     height: screenWidth(120),
-    backgroundColor: colors.white,
+    backgroundColor: colors.mainColor,
     marginTop: screenWidth(-60),
     marginHorizontal: screenWidth(20),
     elevation: screenWidth(5),
@@ -83,11 +86,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: size.font24,
-    color: colors.white,
+    color: colors.black,
+    fontWeight: 'bold',
   },
   name: {
     paddingLeft: screenWidth(20),
-    color: colors.black,
+    color: colors.white,
     fontSize: size.font20,
   },
   subtitle: {
@@ -99,6 +103,6 @@ const styles = StyleSheet.create({
     width: screenWidth(10),
     borderRadius: screenWidth(10),
     top: screenWidth(-10),
-    marginLeft: screenWidth(30),
+    marginLeft: screenWidth(42),
   },
 });

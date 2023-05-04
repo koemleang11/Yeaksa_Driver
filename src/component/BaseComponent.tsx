@@ -45,10 +45,12 @@ const BaseComponent: React.FC<Props> = props => {
       <HStack
         style={{
           ...styles.header,
-          paddingTop: StatusBar.currentHeight,
-          height: screenWidth(60) + StatusBar.currentHeight!,
+          // paddingTop: StatusBar.currentHeight,
+          height: screenWidth(60),
         }}>
-        <TouchableOpacity onPress={() => goBack()} style={styles.button}>
+        <TouchableOpacity
+          onPress={() => navigate(Routes.Dashboard)}
+          style={styles.button}>
           <Ionicons
             name="chevron-back-outline"
             size={screenWidth(30)}
@@ -56,9 +58,9 @@ const BaseComponent: React.FC<Props> = props => {
           />
         </TouchableOpacity>
         {props.disabledTranstate ? (
-          <Text style={styles.title}>{props.title}</Text>
+          <TextTranslate style={styles.title}>{props.title}</TextTranslate>
         ) : (
-          <Text style={styles.title}>{props.title}</Text>
+          <TextTranslate style={styles.title}>{props.title}</TextTranslate>
         )}
         {props.enabledAdd ? (
           <TouchableOpacity onPress={props.onAdd} style={styles.button}>

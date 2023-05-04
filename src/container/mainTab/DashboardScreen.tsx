@@ -24,6 +24,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {dateFilter} from '../../temp/Date';
 import SelectDate from '../../component/dashboard/SelectDate';
 import {TouchableOpacity} from 'react-native';
+import {TextTranslate} from '../../component/custom/Label';
 
 const DashboardScreen = () => {
   const [openReject, setOpenReject] = useState(false);
@@ -108,12 +109,12 @@ const DashboardScreen = () => {
                         }}>
                         <DashBoardCard
                           value="25"
-                          title="Total Assigned"
+                          title="total_assigned"
                           icon={AppImages.Assigned}
                           onPress={() => navigate(Routes.Assigned)}
                         />
                         <DashBoardCard
-                          title="Total Accepted"
+                          title="total_accepted"
                           value="5"
                           icon={AppImages.Rating}
                           size={screenWidth(25)}
@@ -125,13 +126,13 @@ const DashboardScreen = () => {
                           marginHorizontal: padding_horizontal,
                         }}>
                         <DashBoardCard
-                          title="In Delivery"
+                          title="in_delivery"
                           value="20"
                           icon={AppImages.Order}
                           onPress={() => navigate(Routes.Indelivery)}
                         />
                         <DashBoardCard
-                          title="Total Commission"
+                          title="total_commission"
                           value="$35"
                           icon={AppImages.TotalSale}
                           size={screenWidth(22)}
@@ -144,13 +145,15 @@ const DashboardScreen = () => {
                           paddingHorizontal: padding_horizontal,
                           paddingVertical: screenWidth(20),
                         }}>
-                        <Text style={styles.recentlyText}>
-                          Recently Assigned
-                        </Text>
+                        <TextTranslate style={styles.recentlyText}>
+                          recently_assigned
+                        </TextTranslate>
                         <TouchableOpacity
                           activeOpacity={0.8}
                           onPress={() => navigate(Routes.Assigned)}>
-                          <Text style={styles.seeAll}>See All</Text>
+                          <TextTranslate style={styles.seeAll}>
+                            see_all
+                          </TextTranslate>
                         </TouchableOpacity>
                       </HStack>
                       <VStack style={{paddingHorizontal: padding_horizontal}}>

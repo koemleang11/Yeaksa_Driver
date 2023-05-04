@@ -17,7 +17,7 @@ export const Routes = {
   Success: 'Success',
   SignUp: 'SignUp',
   Dashboard: 'DashBoard',
-  Chat: 'Chat',
+  MyJob: 'MyJob',
   MainProduct: 'MainProduct',
   AddProduct: 'AddProduct',
   Order: 'Order',
