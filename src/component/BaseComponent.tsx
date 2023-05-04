@@ -63,7 +63,7 @@ const BaseComponent: React.FC<Props> = props => {
         {props.disabledTranstate ? (
           <TextTranslate style={styles.title}>{props.title}</TextTranslate>
         ) : (
-          <Text style={styles.title}>{props.title}</Text>
+          <TextTranslate style={styles.title}>{props.title}</TextTranslate>
         )}
         <HStack>
           {props.enabledAdd ? (
