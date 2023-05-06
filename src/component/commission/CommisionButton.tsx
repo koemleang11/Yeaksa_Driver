@@ -18,7 +18,7 @@ const ComissionButton = (props: any) => {
         <Center>
           <Image source={props.images} style={styles.icon} />
         </Center>
-        <VStack>
+        <VStack alignSelf={'flex-end'}>
           <Text style={[styles.Value]}>{props.value}</Text>
           <Text style={[styles.text]}>{props.title}</Text>
         </VStack>
@@ -40,11 +40,13 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.white,
+    textAlign: 'left',
   },
   Value: {
     fontSize: size.font22,
     color: colors.white,
     fontWeight: 'bold',
+    textAlign: 'left',
   },
   icon: {
     height: screenWidth(30),

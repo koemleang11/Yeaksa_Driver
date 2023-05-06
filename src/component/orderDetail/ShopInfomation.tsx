@@ -1,13 +1,11 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
-import {Box, Center, HStack} from 'native-base';
+import {Center, HStack} from 'native-base';
 import colors from '../../theme/colors';
 import {size} from '../../theme/fonts';
 import {Battambang} from '../../services/config/fonts';
 import {padding_horizontal, screenWidth} from '../../theme/layouts';
 import {style} from '../../styles/style';
-import {AppImages} from '../../theme/images';
-import SubmitButton from '../custom/SubmitButton';
 import DirectionButton from '../custom/DirectionButton';
 import {navigate} from '../../services/navigate/navigation';
 import {Routes} from '../../temp/Routes';

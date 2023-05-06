@@ -1,8 +1,6 @@
 import {FlatList, StyleSheet, SafeAreaView, View} from 'react-native';
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import BaseComponent from '../../component/BaseComponent';
-import PaymentStatusDropDown from '../../component/order/PaymentStatusDropDown';
-import DeliveryStatusDropDown from '../../component/order/DeliveryStatusDropDown';
 import {HStack} from 'native-base';
 import {padding_horizontal, screenWidth} from '../../theme/layouts';
 import CardItem from '../../component/order/CardItem';
@@ -18,7 +16,7 @@ const Indelivery = () => {
   return (
     <>
       <BaseComponent
-        title="In Delivery"
+        title="in_delivery"
         style={{paddingHorizontal: padding_horizontal, flex: 1}}>
         <>
           <View

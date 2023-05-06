@@ -1,173 +1,93 @@
-import React from 'react';
-import {StyleSheet} from 'react-native';
+import React, { useState } from "react";
+import { Dimensions, StyleSheet, View } from "react-native";
+import { PanGestureHandler } from "react-native-gesture-handler";
+import Animated, { interpolateColor, runOnJS, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated";
 
-import LinearGradient from 'react-native-linear-gradient';
-
-import {PanGestureHandler} from 'react-native-gesture-handler';
-import Animated, {
-  useAnimatedGestureHandler,
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring,
-  interpolate,
-  Extrapolate,
-  interpolateColor,
-  runOnJS,
-} from 'react-native-reanimated';
-import {useState} from 'react';
-import {screenHeight, screenWidth} from '../../theme/layouts';
-import colors from '../../theme/colors';
-import {navigate} from '../../services/navigate/navigation';
-import {Routes} from '../../temp/Routes';
-
-const BUTTON_WIDTH = 350;
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
+const BUTTON_WIDTH = SCREEN_WIDTH - 48;
 const BUTTON_HEIGHT = 100;
 const BUTTON_PADDING = 10;
-const SWIPEABLE_DIMENSIONS = BUTTON_HEIGHT - 2 * BUTTON_PADDING;
+const SWIPEABLE_DIMENSIONS = 100 - 2 * BUTTON_PADDING;
 
 const H_WAVE_RANGE = SWIPEABLE_DIMENSIONS + 2 * BUTTON_PADDING;
 const H_SWIPE_RANGE = BUTTON_WIDTH - 2 * BUTTON_PADDING - SWIPEABLE_DIMENSIONS;
-const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
-const SwipeButton = ({onToggle}: any) => {
-  // Animated value for X translation
-  const X = useSharedValue(0);
-  // Toggled State
+const SwipeButton = ({onToggle}:any) => {
+  const sharedValue = useSharedValue(0);
+
   const [toggled, setToggled] = useState(false);
-
-  // Fires when animation ends
-  const handleComplete = (isToggled: any) => {
+  const InterpolateXInput = [0, H_SWIPE_RANGE];
+    const handleComplete = (isToggled: boolean | ((prevState: boolean) => boolean)) => {
     if (isToggled !== toggled) {
       setToggled(isToggled);
       onToggle(isToggled);
     }
   };
-
-  // Gesture Handler Events
   const animatedGestureHandler = useAnimatedGestureHandler({
     onStart: (_, ctx) => {
-      ctx.completed = toggled;
-    },
+        ctx.completed = toggled;
+      },
     onActive: (e, ctx) => {
-      let newValue;
-      if (ctx.completed) {
-        newValue = H_SWIPE_RANGE + e.translationX;
-        navigate(Routes.Login);
-      } else {
-        newValue = e.translationX;
-      }
-
-      if (newValue >= 0 && newValue <= H_SWIPE_RANGE) {
-        X.value = newValue;
-      }
+        let newValue;
+        if (ctx.completed) {
+          newValue = H_SWIPE_RANGE + e.translationX;
+        } else {
+          newValue = e.translationX;
+        }
+  
+        if (newValue >= 0 && newValue <= H_SWIPE_RANGE) {
+          sharedValue.value = newValue;
+        }
     },
     onEnd: () => {
-      if (X.value < BUTTON_WIDTH / 2 - SWIPEABLE_DIMENSIONS / 2) {
-        X.value = withSpring(0);
+      if (
+        sharedValue.value <
+        BUTTON_WIDTH / 2 - SWIPEABLE_DIMENSIONS / 2 - 2 * BUTTON_PADDING
+      ) {
+        sharedValue.value = withSpring(0);
         runOnJS(handleComplete)(false);
       } else {
-        X.value = withSpring(H_SWIPE_RANGE);
+        sharedValue.value = withSpring(H_SWIPE_RANGE);
         runOnJS(handleComplete)(true);
       }
     },
   });
-
-  const InterpolateXInput = [0, H_SWIPE_RANGE];
-  const AnimatedStyles = {
-    swipeCont: useAnimatedStyle(() => {
-      return {};
-    }),
-    colorWave: useAnimatedStyle(() => {
-      return {
-        width: H_WAVE_RANGE + X.value,
-
-        opacity: interpolate(X.value, InterpolateXInput, [0, 1]),
-      };
-    }),
-    swipeable: useAnimatedStyle(() => {
-      return {
-        backgroundColor: interpolateColor(
-          X.value,
-          [0, BUTTON_WIDTH - SWIPEABLE_DIMENSIONS - BUTTON_PADDING],
-          ['#06d6a0', '#fff'],
-        ),
-        transform: [{translateX: X.value}],
-      };
-    }),
-    swipeText: useAnimatedStyle(() => {
-      return {
-        opacity: interpolate(
-          X.value,
-          InterpolateXInput,
-          [0.7, 0],
-          Extrapolate.CLAMP,
-        ),
-        transform: [
-          {
-            translateX: interpolate(
-              X.value,
-              InterpolateXInput,
-              [0, BUTTON_WIDTH / 2 - SWIPEABLE_DIMENSIONS],
-              Extrapolate.CLAMP,
-            ),
-          },
-        ],
-      };
-    }),
-  };
+  
+    // colors is from the version one use interpolatecolors
+  const animatedStylesSwipe = useAnimatedStyle(() => ({
+    transform: [{translateX: sharedValue.value}],
+    backgroundColor: interpolateColor(
+        sharedValue.value,
+        InterpolateXInput,
+        ['#1b9aaa', '#fff'],
+      ),
+  }));
 
   return (
-    <Animated.View style={[styles.swipeCont, AnimatedStyles.swipeCont]}>
-      <AnimatedLinearGradient
-        style={[AnimatedStyles.colorWave, styles.colorWave]}
-        colors={['#06d6a0', '#1b9aaa']}
-        start={{x: 0.0, y: 0.5}}
-        end={{x: 1, y: 0.5}}
-      />
+    <View style={styles.containerStyle}>
       <PanGestureHandler onGestureEvent={animatedGestureHandler}>
-        <Animated.View style={[styles.swipeable, AnimatedStyles.swipeable]} />
+        <Animated.View
+          style={[styles.swipeableCircle, animatedStylesSwipe]}></Animated.View>
       </PanGestureHandler>
-      <Animated.Text style={[styles.swipeText, AnimatedStyles.swipeText]}>
-        Swipe Me
-      </Animated.Text>
-    </Animated.View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  swipeCont: {
-    height: screenWidth(70),
-    width: '65%',
-    backgroundColor: colors.mainColor,
-    borderRadius: BUTTON_HEIGHT,
-    padding: BUTTON_PADDING,
-    display: 'flex',
-    justifyContent: 'center',
+  containerStyle: {
+    backgroundColor: 'white',
+    height: BUTTON_HEIGHT,
+    width: BUTTON_WIDTH,
+    borderRadius: 100,
     alignItems: 'center',
-    flexDirection: 'row',
+    justifyContent: 'center',
   },
-  colorWave: {
+  swipeableCircle: {
+    height: SWIPEABLE_DIMENSIONS,
+    width: SWIPEABLE_DIMENSIONS,
+    backgroundColor: 'red',
+    borderRadius: 100,
     position: 'absolute',
-    left: 0,
-    height: screenWidth(70),
-    width: '65%',
-    borderRadius: BUTTON_HEIGHT,
-  },
-  swipeable: {
-    position: 'absolute',
-    left: BUTTON_PADDING,
-    height: screenWidth(60),
-    width: screenWidth(60),
-    borderRadius: SWIPEABLE_DIMENSIONS,
     zIndex: 3,
+    left: BUTTON_PADDING,
   },
-  swipeText: {
-    alignSelf: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-    zIndex: 2,
-    color: '#1b9aaa',
-  },
-});
-
-export default SwipeButton;

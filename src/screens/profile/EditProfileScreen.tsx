@@ -1,21 +1,16 @@
-import {ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import BaseComponent from '../../component/BaseComponent';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import ImagePicker from 'react-native-image-crop-picker';
-import Entypo from 'react-native-vector-icons/Entypo';
-import {Box, VStack, View} from 'native-base';
-import FastImage from 'react-native-fast-image';
+import {VStack, View} from 'native-base';
 import {padding_horizontal, screenWidth} from '../../theme/layouts';
 import colors from '../../theme/colors';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {style} from '../../styles/style';
 import TextInputWithLabel from '../../component/input/TextInputWithLabel';
 import SubmitButton from '../../component/custom/SubmitButton';
 import {useAppDispatch, useAppSelector} from '../../hooks/dispatch';
-import {ErrorMessage, Formik} from 'formik';
+import {Formik} from 'formik';
 import * as Yup from 'yup';
-import AccountHeader from '../../component/account/AccountHeader';
 import EditProfileHeader from '../../component/product/EditProfileHeader';
 
 const EditProfileScreen = () => {

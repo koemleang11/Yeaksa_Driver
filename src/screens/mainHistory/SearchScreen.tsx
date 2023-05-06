@@ -2,8 +2,6 @@ import {FlatList, StyleSheet, Text, Image} from 'react-native';
 import React, {useCallback} from 'react';
 import BaseComponent from '../../component/BaseComponent';
 import {padding_horizontal, screenWidth} from '../../theme/layouts';
-import {navigate} from '../../services/navigate/navigation';
-import {Routes} from '../../temp/Routes';
 import CustomSearch from '../../component/mainHistory/CustomSearch';
 import {Center, HStack, VStack} from 'native-base';
 import {AppImages} from '../../theme/images';

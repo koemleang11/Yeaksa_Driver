@@ -49,17 +49,16 @@ const styles = StyleSheet.create({
   },
   textInput: {
     minWidth: screenWidth(200),
-    fontSize: size.font18,
+    fontSize: size.font16,
     color: colors.black,
     ...Battambang,
     backgroundColor: colors.white,
     paddingHorizontal: screenWidth(25),
-    borderRadius: screenWidth(50),
-    height: screenWidth(60),
+    height: screenWidth(50),
     marginTop: screenWidth(20),
   },
   icon: {
-    height: screenWidth(30),
-    width: screenWidth(30),
+    height: screenWidth(25),
+    width: screenWidth(25),
   },
 });

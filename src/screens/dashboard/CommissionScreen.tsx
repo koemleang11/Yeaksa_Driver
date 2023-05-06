@@ -1,13 +1,10 @@
 import {FlatList, StyleSheet, SafeAreaView, View} from 'react-native';
 import React, {useCallback, useState} from 'react';
 import BaseComponent from '../../component/BaseComponent';
-import PaymentStatusDropDown from '../../component/order/PaymentStatusDropDown';
-import DeliveryStatusDropDown from '../../component/order/DeliveryStatusDropDown';
 import {HStack, VStack} from 'native-base';
 import {padding_horizontal, screenWidth} from '../../theme/layouts';
 import CardItem from '../../component/order/CardItem';
 import colors from '../../theme/colors';
-import OrderCard from '../../component/dashboard/OrderCard';
 import {AppImages} from '../../theme/images';
 import SelectDate from '../../component/dashboard/SelectDate';
 import {dateFilter} from '../../temp/Date';
@@ -25,7 +22,7 @@ const CommissionScreen = () => {
   return (
     <>
       <BaseComponent
-        title="Total Commission"
+        title="total_commission"
         style={{paddingHorizontal: padding_horizontal, flex: 1}}>
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -83,18 +80,18 @@ const CommissionScreen = () => {
                   />
                   <CommisionButton
                     images={AppImages.Order}
-                    title="Total Order"
-                    value="$1550.00"
+                    title="Total Commission"
+                    value="$150.00"
                   />
                   <CommisionButton
                     images={AppImages.Order}
-                    title="Total Order"
-                    value="$1550.00"
+                    title="Total Shop"
+                    value="50"
                   />
                   <CommisionButton
                     images={AppImages.Order}
-                    title="Total Order"
-                    value="$1550.00"
+                    title="Total Customer"
+                    value="51"
                   />
                 </VStack>
                 <FlatList

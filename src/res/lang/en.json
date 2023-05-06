@@ -200,6 +200,8 @@
     "start_delivery": "Start Delivery",
     "Finish": "Finish",
     "Gander": "Gander",
-    "Date_Of_Birth": "Date Of Birth"
+    "Date_Of_Birth": "Date Of Birth",
+    "pick_Up": "Pick Up",
+    "Search" : "Search"
 
 }

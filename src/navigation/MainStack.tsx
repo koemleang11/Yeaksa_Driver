@@ -41,15 +41,16 @@ const MainStack = () => {
         animation: 'slide_from_right',
       }}>
       <Stack.Screen
-        name={Routes.Started}
-        component={_user.user === false ? LoginScreen : MainTab}
-        options={{animation: 'fade'}}
-      />
-      <Stack.Screen
         name={Routes.Language}
         component={LanguageScreen}
         options={{animation: 'fade'}}
       />
+      <Stack.Screen
+        name={Routes.Started}
+        component={_user.user === false ? LoginScreen : MainTab}
+        options={{animation: 'fade'}}
+      />
+
       <Stack.Screen
         name={Routes.Login}
         component={LoginScreen}

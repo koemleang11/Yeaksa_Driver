@@ -1,8 +1,8 @@
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import {screenWidth} from '../../theme/layouts';
 import {ScrollView} from 'react-native';
-import {Alert, Box, HStack} from 'native-base';
+import {Box, HStack} from 'native-base';
 import BaseComponent from '../../component/BaseComponent';
 import OrderItem from '../../component/orderDetail/OrderItem';
 import SubmitButton from '../../component/custom/SubmitButton';
@@ -13,31 +13,32 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CustomRejectModal from '../../component/modal/CustomRejectModal';
 import {AppImages} from '../../theme/images';
 import ShopInformation from '../../component/orderDetail/ShopInfomation';
-import SwipeButton from '../../component/custom/CustomSwipeButton';
 import {navigate} from '../../services/navigate/navigation';
 import {Routes} from '../../temp/Routes';
 const OrderDetailScreen = () => {
   const [openReject, setOpenReject] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(false);
-  const [toggleState, setToggleState] = useState(false);
   const [buttonAcceptText, setButtonAcceptText] = useState('accept_order');
   const [buttonRejectText, setButtonRejectText] = useState('rejected');
   const [statuseText, setstatuseText] = useState('Assigned');
-  const [statuseColors, setstatuseColors] = useState(colors.red);
+  const [statuseColors, setstatuseColors] = useState('colors.red');
 
   const handleAccepted = () => {
     if (buttonAcceptText === 'accept_order') {
       setOpenConfirm(true);
+      setButtonAcceptText('pick_Up');
+    } else if (buttonAcceptText === 'pick_Up') {
       setButtonAcceptText('arrived_shop');
     } else if (buttonAcceptText === 'arrived_shop') {
+      setstatuseText('Delivery');
       setButtonAcceptText('start_delivery');
     } else if (buttonAcceptText === 'start_delivery') {
       setstatuseText('Delivery');
       setButtonAcceptText('Finish');
     } else if (buttonAcceptText === 'Finish') {
       setstatuseText('Completed');
+      setstatuseColors('colors.red');
       setOpenConfirm(true);
-      navigate(Routes.MainProduct);
     }
   };
   const handleRejected = () => {
@@ -50,6 +51,9 @@ const OrderDetailScreen = () => {
 
   const handleConfirm = () => {
     setOpenConfirm(false);
+    if (statuseText === 'Finish') {
+      navigate(Routes.MainProduct);
+    }
   };
   const handleReject = () => {
     setOpenReject(false);
@@ -127,6 +131,7 @@ const OrderDetailScreen = () => {
         firstButtonPress={() => setOpenConfirm(false)}
         secondButtonPress={handleConfirm}
       />
+
       <CustomRejectModal
         isOpen={openReject}
         onClose={() => setOpenReject(false)}
