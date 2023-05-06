@@ -16,6 +16,7 @@ import {useAppDispatch, useAppSelector} from '../../hooks/dispatch';
 import {ErrorMessage, Formik} from 'formik';
 import * as Yup from 'yup';
 import AccountHeader from '../../component/account/AccountHeader';
+import EditProfileHeader from '../../component/product/EditProfileHeader';
 
 const EditProfileScreen = () => {
   const insets = useSafeAreaInsets();
@@ -116,21 +117,7 @@ const EditProfileScreen = () => {
             }) => {
               return (
                 <ScrollView showsVerticalScrollIndicator={false}>
-                  <AccountHeader title="Edit Profile" />
-                  {/* <Box
-                    style={{
-                      width: screenWidth(140),
-                      marginVertical: screenWidth(30),
-                      alignSelf: 'center',
-                    }}>
-                    <TouchableOpacity onPress={onPress} style={styles.button}>
-                      <Entypo
-                        name="camera"
-                        size={screenWidth(22)}
-                        color={colors.mainColor}
-                      />
-                    </TouchableOpacity>
-                  </Box> */}
+                  <EditProfileHeader title="edit_profile" />
                   <VStack style={{marginHorizontal: screenWidth(20)}}>
                     <TextInputWithLabel
                       label="first_name"
@@ -151,7 +138,7 @@ const EditProfileScreen = () => {
                       onChangeText={setEmail}
                     />
                     <TextInputWithLabel
-                      label="Date Of Birth"
+                      label="Date_Of_Birth"
                       placeholder="18-September-1998"
                       value={email}
                       onChangeText={setEmail}

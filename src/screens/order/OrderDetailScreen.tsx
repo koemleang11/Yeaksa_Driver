@@ -36,9 +36,7 @@ const OrderDetailScreen = () => {
       setButtonAcceptText('Finish');
     } else if (buttonAcceptText === 'Finish') {
       setstatuseText('Completed');
-      setstatuseColors(colors.red);
       setOpenConfirm(true);
-
       navigate(Routes.MainProduct);
     }
   };

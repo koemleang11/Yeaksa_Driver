@@ -90,7 +90,11 @@ const MainStack = () => {
         component={PrivacyPolicyScreen}
       />
       <Stack.Screen name={Routes.Settings} component={SettingScreen} />
-      <Stack.Screen name={Routes.OrderDetail} component={OrderDetailScreen} />
+      <Stack.Screen
+        name={Routes.OrderDetail}
+        component={OrderDetailScreen}
+        options={{animation: 'slide_from_right'}}
+      />
       <Stack.Screen
         name={Routes.GeneralSetting}
         component={GeneralSettingScreen}
