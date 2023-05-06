@@ -39,6 +39,7 @@ const OrderDetailScreen = () => {
       setstatuseText('Completed');
       setstatuseColors('colors.red');
       setOpenConfirm(true);
+      navigate(Routes.MainProduct);
     }
   };
   const handleRejected = () => {
